@@ -44,6 +44,6 @@ class ExpenseDetail(APIView):
         try:
             expense = Expense.objects.get(pk=pk)
         except Expense.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+            return Response({"message": "Expense not found"}, status=status.HTTP_404_NOT_FOUND)
         expense.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return Response({"message": "Deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
